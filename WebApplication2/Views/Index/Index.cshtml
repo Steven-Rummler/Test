@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet"  href="https://www.w3schools.com/w3css/4/w3.css" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><!---this is our list on the main menu-->
+                <a href="@Url.Action("Index", "Stack")" class="w3-bar-item w3-button">1. Stack</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Queue")" class="w3-bar-item w3-button">2. Queue</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Dictionary")" class="w3-bar-item w3-button">3. Dictionary</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Exit", "Index")" class="w3-bar-item w3-button">4. Exit</a>
+            </li>
+        </ul>
+        <img src="~/Graphics/Greg Anderson.jpg" />
+    </div>
+</body>
+</html>

@@ -12,7 +12,7 @@
     <title>Stack</title>
 </head>
 <body>
-    <div> 
+    <div>
         <ul>
             <li>
                 <a href="@Url.Action("AddOne", "Stack")" class="w3-bar-item w3-button">1. Add one item to Stack</a>
@@ -30,7 +30,7 @@
                 <a href="@Url.Action("ClearStack", "Stack")" class="w3-bar-item w3-button">5. Clear Stack</a>
             </li>
             <li>
-                <a href="@Url.Action("SearchView", "Stack")" class="w3-bar-item w3-button">6. Search Stack</a>
+                <a href="@Url.Action("SearchStack", "Stack")" class="w3-bar-item w3-button">6. Search Stack</a>
             </li>
             <li>
                 <a href="@Url.Action("Index", "Index")" class="w3-bar-item w3-button">7. Return to Main Menu</a>
@@ -38,6 +38,11 @@
         </ul>
     </div>
     <div>
+        @using (Html.BeginForm("SearchStack", "Stack", FormMethod.Post))
+        {
+            <input type="text" name="searchValue" id="searchValue" />
+            <input type="submit" value="Search" />
+        }
         @Html.Raw((String)ViewBag.DisplayResult)
         @Html.Raw((String)ViewBag.DisplayMyStack)
     </div>

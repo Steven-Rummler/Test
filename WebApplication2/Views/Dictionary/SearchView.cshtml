@@ -30,7 +30,7 @@
                 <a href="@Url.Action("ClearDictionary", "Dictionary")" class="w3-bar-item w3-button">5. Clear Dictionary</a>
             </li>
             <li>
-                <a href="@Url.Action("SearchView", "Dictionary")" class="w3-bar-item w3-button">6. Search Dictionary</a>
+                <a href="@Url.Action("SearchDictionary", "Dictionary")" class="w3-bar-item w3-button">6. Search Dictionary</a>
             </li>
             <li>
                 <a href="@Url.Action("Index", "Index")" class="w3-bar-item w3-button">7. Return to Main Menu</a>
@@ -38,6 +38,11 @@
         </ul>
     </div>
     <div>
+        @using (Html.BeginForm("SearchDictionary", "Dictionary", FormMethod.Post))
+        {
+            <input type="text" name="searchValue" id="searchValue" />
+            <input type="submit" value="Search" />
+        }
         @Html.Raw((String)ViewBag.DisplayResult)
         @Html.Raw((String)ViewBag.DisplayMyDictionary)
     </div>

@@ -9,7 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <title>Queue Index</title>
+    <title>Queue</title>
 </head>
 <body>
     <div>
@@ -38,6 +38,11 @@
         </ul>
     </div>
     <div>
+        @using (Html.BeginForm("SearchQueue", "Queue", FormMethod.Post))
+         {
+            <input type="text" name="searchValue" id="searchValue" />
+            <input type="submit" value="Search" />
+        }
         @Html.Raw((String)ViewBag.DisplayResult)
         @Html.Raw((String)ViewBag.DisplayMyQueue)
     </div>

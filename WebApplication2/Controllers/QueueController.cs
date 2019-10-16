@@ -4,96 +4,104 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Data_Structure_HW.Controllers
+namespace DataStructuresAssignment.Controllers
 {
     public class QueueController : Controller
     {
         static Queue<string> myQueue = new Queue<string>();
-        // GET: Queue
+        // GET: Stack
         public ActionResult Index()
         {
-            ViewBag.MyQueue = myQueue;
+            ViewBag.DisplayMyQueue = "<br>";
+            ViewBag.DisplayResult = "<br>";
             return View();
         }
-        public ActionResult Add()
-        {
+        public  ActionResult AddOne()
+        {//adds one value to queue
             myQueue.Enqueue("New Entry " + (myQueue.Count + 1));
-            ViewBag.MyQueue = myQueue;
+            ViewBag.DisplayResult = "<p>Item added to Queue</p>";
             return View("Index");
         }
-        public ActionResult HugeList()
+        public ActionResult AddList()
         {
+            //clears queue
             myQueue.Clear();
-
-            do
+            //adds 2000 items "New Entry #"
+            for (int iCount = 0; iCount < 2000; iCount++)
             {
-                myQueue.Enqueue("New Entry " + (myQueue.Count + 1));
+                myQueue.Enqueue("New Entry " + (iCount + 1));
             }
-            while (myQueue.Count < 2000);
-            ViewBag.MyQueue = myQueue;
-
+            ViewBag.DisplayResult = "<p>2,000 items added to Queue</p>";
             return View("Index");
-
         }
-        public ActionResult Display()
-        {
-            ViewBag.MyQueue = myQueue;
-            return View("Index");
-
-        }
-        public ActionResult Delete()
-        {
-            if (myQueue.Count > 0)
+        public ActionResult DisplayQueue()
+        {//displays whole stack below menu
+            foreach (var item in myQueue)
             {
-                myQueue.Dequeue();
+                ViewBag.DisplayMyQueue += "<p>" + item + "</p>";
             }
-            else
-            {
-                ViewBag.Message = "There are no elements to delete";
-            }
-
-            ViewBag.myQueue = myQueue;
             return View("Index");
-
         }
-        public ActionResult Clear()
-        {
+        public ActionResult DeleteFrom()
+        {//removes top item in stack
+            myQueue.Dequeue();
+            ViewBag.DisplayResult = "<p>First item removed from Queue</p>";
+            return View("Index");
+        }
+        public ActionResult ClearQueue()
+        {//clears stack
             myQueue.Clear();
-            ViewBag.MyQueue = myQueue;
+            ViewBag.DisplayResult = "<p>Queue cleared</p>";
             return View("Index");
         }
-        public ActionResult Search()
-        {
-
+        public ActionResult SearchQueue()
+        {//get input for what to search 
+            string input = "New Entry 100";
+            bool contains = false;
+            //begin timer
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-
             sw.Start();
-
-            //loop to do all the work
-            if (myQueue.Contains("New Entry 4"))
-            {
-                ViewBag.Message = "New Entry 4 was found";
+            //perform search
+            if (myQueue.Contains(input)) { contains = true; }
+            sw.Stop();
+            TimeSpan ts = sw.Elapsed;
+            //return whether it was found and how long it took
+            if (contains == true)
+            {//return found and time
+                ViewBag.DisplayResult = "<p>New Entry 100 found in Queue</p><p>Time elapsed: " + ts + "</p>";
             }
             else
-            {
-                ViewBag.Message = "New Entry 4 was not found";
+            {//return not found and time
+                ViewBag.DisplayResult = "<p>New Entry 100 was not found in Queue because it does not exist</p><p>Time elapsed: " + ts + "</p>";
             }
-
-            sw.Stop();
-
-            TimeSpan ts = sw.Elapsed;
-
-            ViewBag.Message += "<br> The time it took is: " + ts;
-            //ViewBag.StopWatch = ts;
-            ViewBag.myQueue = myQueue;
             return View("Index");
-
         }
-        public ActionResult GoHome()
+        public ActionResult SearchView()
         {
-
-            return RedirectToAction("Index", "Home");
-
+            return View("SearchView");
+        }
+        [HttpPost]
+        public ActionResult SearchQueue(string searchValue)
+        {//searches for input item
+            string input = searchValue;
+            bool contains = false;
+            //begin timer
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+            //perform search
+            if (myQueue.Contains(input)) { contains = true; }
+            sw.Stop();
+            TimeSpan ts = sw.Elapsed;
+            //return whether it was found and how long it took
+            if (contains == true)
+            {//return found and time
+                ViewBag.DisplayResult = "<p>" + input + " was found in the queue</p><p>Time elapsed: " + ts + "</p>";
+            }
+            else
+            {//return not found and time
+                ViewBag.DisplayResult = "<p>" + input + " was not found in the queue because it does not exist</p><p>Time elapsed: " + ts + "</p>";
+            }
+            return View("Index");
         }
     }
 }
