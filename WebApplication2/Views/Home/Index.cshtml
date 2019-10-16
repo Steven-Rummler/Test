@@ -1,0 +1,31 @@
+﻿
+<br/>
+<div class="jumbotron">
+    <h1>Welcome to Blow Out!</h1>
+    <p class="lead">We blow our competitors out of the water</p>
+    <img src="~/Content/indicative.jpg" style="max-width:100%; height:auto;" alt="An image indicative of musical instruments." />
+    <br/><br />
+    <p>The website allows rentals of new and used instruments.</p>
+    <p>"It's easy to play any musical instrument: all you have to do is touch the right key at the right time and the instrument will play itself”.  - Johann Sebastian Bach</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="jumbotron">
+            <p>Blow Out Instrument Rentals provides a variety of best-in-class musical instruments - at incredible prices.</p>
+            <a class="btn btn-primary" style="margin:2px" href=@Url.Action("Selection", "Home")>View Selection</a> <a class="btn btn-primary" style="margin:2px" href=@Url.Action("Rentals", "Home")>Rent an Instrument</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="jumbotron">
+            <p>Problem? Question? We'd love to hear from you!</p>
+            <a class="btn btn-primary" href=@Url.Action("Index", "Contact")>Go</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="jumbotron">
+            <p>Have us send you a weirdly broken confirmation email!</p>
+            <a class="btn btn-primary" href=@Url.Action("Email", "Contact", new { name = "bob", email = "steven.rummler@gmail.com/" }) role="button">Go</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿
+<br />
+
+<div class="jumbotron">
+    @ViewBag.Check
+    <br /><br />
+    <form action=@Url.Action("Login") method="post">
+        Username: <input type="text" name="name" /><br /><br />
+        Password: <input type="password" name="pass" /><br /><br />
+        <input type="submit" value="Submit" />
+    </form>
+    <br />
+</div>
+
+@using (Html.BeginForm("AuthLogin", "Home", FormMethod.Post))
+{
+    <label for="inputEmail">Email Address</label>
+    @Html.TextBox("Email Address")
+    <label for="inputPassword">Password</label>
+    @Html.Password("Password")
+    <button type="submit">Login</button>
+}

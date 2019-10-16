@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BlowOut.Models.Instrument>
+
+<br />
+<div class="jumbotron">
+    <h4>Instruments Available to Rent</h4>
+    <table class="table">
+        <tr>
+            <th>
+                Instrument
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            if (item.ClientID == null)
+            {
+                <text><tr>
+                    <td>
+                        @Html.ActionLink(item.Type + ' ' + item.Description, "Details", "Home", new { id = item.InstrumentID }, new { })
+                    </td>
+                    <td>
+                        $@item.Price a month
+                    </td>
+                </tr></text>
+            }
+        }
+    </table>
+</div>

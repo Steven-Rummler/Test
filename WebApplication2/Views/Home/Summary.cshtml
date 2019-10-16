@@ -1,0 +1,16 @@
+﻿<br/>
+<div class="row">
+    <div class="col-md-8">
+        <div class="jumbotron">
+            Thanks for your patronage, @ViewBag.Client.FirstName @ViewBag.Client.LastName!
+            Your order number is @ViewBag.Client.ClientID.
+            Your @ViewBag.Instrument.Type @ViewBag.Instrument.Description will be available for pickup shortly.
+            You may anticipate a competitive price of $@ViewBag.Instrument.Price per month, which will total $@(@ViewBag.Instrument.Price * 18) over 18 months.
+            Please feel free to call us with any questions.
+            @{string link = "/Content/" + @ViewBag.Instrument.Description + ".jpg";}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <img src=@link alt="Music" style="max-width:100%; max-height:100%;" />
+    </div>
+</div>

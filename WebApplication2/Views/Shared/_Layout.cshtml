@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlowOut!</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" type="text/css" href="~/Content/NewCSS.css" />
+
+</head>
+<body style="padding-top:0px;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        @Html.ActionLink("BlowOut Instrument Rentals", "Index", "Home", null, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-item nav-link" })
+                @Html.ActionLink("Selection", "Selection", "Home", null, new { @class = "nav-item nav-link" })
+                @Html.ActionLink("Rentals", "Rentals", "Home", null, new { @class = "nav-item nav-link" })
+                @Html.ActionLink("Clients", "Index", "Clients", null, new { @class = "nav-item nav-link" })
+                @Html.ActionLink("Instruments", "Index", "Instruments", null, new { @class = "nav-item nav-link" })
+                @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-item nav-link" })
+                @Html.ActionLink("Contact", "Index", "Contact", null, new { @class = "nav-item nav-link" })
+            </div>
+            <div class="navbar-nav ml-auto">
+                @Html.ActionLink("View Clients", "Login", "Home", null, new { @class = "nav-item nav-link"  })
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <div class="jumbotron alert-danger">
+            <p>Once the 18 months has been achieved, the client owns the instrument. If they return it at any time before 3 months there will be a $200 re-stocking fee. If they return it after 3 months they forfeit any equity in the instrument.</p>
+        </div><hr />
+        <footer>
+            <p class="myFooterText">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

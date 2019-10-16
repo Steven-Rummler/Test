@@ -1,0 +1,83 @@
+﻿@model IEnumerable<BlowOut.Models.Instrument>
+
+<br />
+
+<div class="jumbotron">
+    <h2>Rentals with Client Information</h2>
+</div>
+
+<div class="jumbotron">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                Client Information
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.FirstName) @Html.DisplayFor(modelItem => item.Client.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.Address)
+                    @if (item.Client != null)
+                    {<text>, </text>}
+                    @Html.DisplayFor(modelItem => item.Client.City)
+                    @if (item.Client != null)
+                    {<text>, </text>}
+                    @Html.DisplayFor(modelItem => item.Client.State) @Html.DisplayFor(modelItem => item.Client.Zip)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.State)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zip)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.Phone)
+                </td>
+                <td>
+                    @if (item.Client != null)
+                    {@Html.ActionLink("Edit Client", "Edit", "Clients", new { id = item.Client.ClientID }, new { })}
+                    @if (item.Client == null)
+                    {@Html.ActionLink("Add Client", "Create", "Home", new { id = item.InstrumentID }, new { })}
+                </td>
+                <td>
+                    @if (item.Client != null)
+                    {@Html.ActionLink("Delete Client", "Delete", "Clients", new { id = item.Client.ClientID }, new { })}
+                    @if (item.Client == null)
+                    {@Html.ActionLink("Attach Client", "Edit", "Instruments", new { id = item.InstrumentID }, new { })}
+                </td>
+            </tr>
+        }
+
+
+    </table>
+    <a class="btn btn-primary" href=@Url.Action("Create", "Instruments")>Create New</a>
+</div>
