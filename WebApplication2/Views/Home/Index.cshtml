@@ -1,31 +1,96 @@
 ﻿
-<br/>
-<div class="jumbotron">
-    <h1>Welcome to Blow Out!</h1>
-    <p class="lead">We blow our competitors out of the water</p>
-    <img src="~/Content/indicative.jpg" style="max-width:100%; height:auto;" alt="An image indicative of musical instruments." />
-    <br/><br />
-    <p>The website allows rentals of new and used instruments.</p>
-    <p>"It's easy to play any musical instrument: all you have to do is touch the right key at the right time and the instrument will play itself”.  - Johann Sebastian Bach</p>
-</div>
+@{
+    Layout = null;
+}
 
-<div class="row">
-    <div class="col-md-4">
-        <div class="jumbotron">
-            <p>Blow Out Instrument Rentals provides a variety of best-in-class musical instruments - at incredible prices.</p>
-            <a class="btn btn-primary" style="margin:2px" href=@Url.Action("Selection", "Home")>View Selection</a> <a class="btn btn-primary" style="margin:2px" href=@Url.Action("Rentals", "Home")>Rent an Instrument</a>
-        </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+
+<!-- adds style to the menu bar -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+    <!-- Options for the menu bar-->
+    <div class="w3-bar w3-black">
+        <a href="@Url.Action("Index", "Stack")" class="w3-bar-item w3-button">Stack</a>
+        <a href="@Url.Action("Index", "Queue")" class="w3-bar-item w3-button">Queue</a>
+        <a href="@Url.Action("Index", "Dictionary")" class="w3-bar-item w3-button">Dictionary</a>
+        <a href="@Url.Action("Index", "Exit")" class="w3-bar-item w3-button" onclick="BYUPage()">Exit</a>
     </div>
-    <div class="col-md-4">
-        <div class="jumbotron">
-            <p>Problem? Question? We'd love to hear from you!</p>
-            <a class="btn btn-primary" href=@Url.Action("Index", "Contact")>Go</a>
-        </div>
+
+
+    <!-- Sidebar for Stack-->
+    <div class="w3-sidebar w3-bar-block" style="display:none" id="stackSideBar">
+        <button onclick="stack_close()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+        <a href="#" class="w3-bar-item w3-button">Add one time to Stack</a>
+        <a href="#" class="w3-bar-item w3-button">Add Huge List of Items to Stack</a>
+        <a href="#" class="w3-bar-item w3-button">Display Stack</a>
+        <a href="#" class="w3-bar-item w3-button">Delete from Stack</a>
+        <a href="#" class="w3-bar-item w3-button">Clear Stack</a>
+        <a href="#" class="w3-bar-item w3-button">Search Stack</a>
+        <a href="#" class="w3-bar-item w3-button">Return to Main Menu</a>
     </div>
-    <div class="col-md-4">
-        <div class="jumbotron">
-            <p>Have us send you a weirdly broken confirmation email!</p>
-            <a class="btn btn-primary" href=@Url.Action("Email", "Contact", new { name = "bob", email = "steven.rummler@gmail.com/" }) role="button">Go</a>
-        </div>
+
+    <!-- Sidebar for Queue-->
+    <div class="w3-sidebar w3-bar-block" style="display:none" id="queueSideBar">
+        <button onclick="queue_close()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+        <a href="#" class="w3-bar-item w3-button">Add one time to Queue</a>
+        <a href="#" class="w3-bar-item w3-button">Add Huge List of Items to Queue</a>
+        <a href="#" class="w3-bar-item w3-button">Display Queue</a>
+        <a href="#" class="w3-bar-item w3-button">Delete from Queue</a>
+        <a href="#" class="w3-bar-item w3-button">Clear Queue</a>
+        <a href="#" class="w3-bar-item w3-button">Search Queue</a>
+        <a href="#" class="w3-bar-item w3-button">Return to Main Menu</a>
     </div>
-</div>
+
+    <!--Sidebar for Dictionary-->
+    <div class="w3-sidebar w3-bar-block" style="display:none" id="dictionarySideBar">
+        <button onclick="dictionary_close()" class="w3-bar-item w3-button">Close &times;</button>
+        <a href="#" class="w3-bar-item w3-button">Add one time to Dictionary</a>
+        <a href="#" class="w3-bar-item w3-button">Add Huge List of Items to Dictionary</a>
+        <a href="#" class="w3-bar-item w3-button">Display Dictionary</a>
+        <a href="#" class="w3-bar-item w3-button">Delete from Dictionary</a>
+        <a href="#" class="w3-bar-item w3-button">Clear Dictionary</a>
+        <a href="#" class="w3-bar-item w3-button">Search Dictionary</a>
+        <a href="#" class="w3-bar-item w3-button">Return to Main Menu</a>
+    </div>
+
+    <img src="~/Graphics/greg.jpg" alt="Car" style="width:100%">
+    
+    <!-- The functions that have the side bars displayed-->
+    <!--
+
+     <script>
+
+         function stackSideBar() {
+             document.getElementById("stackSideBar").style.width = "100%";
+             document.getElementById("stackSideBar").style.display = "block";
+         }
+         function queueSideBar() {
+             document.getElementById("queueSideBar").style.width = "100%";
+             document.getElementById("queueSideBar").style.display = "block";
+         }
+         function dictionarySideBar() {
+             document.getElementById("dictionarySideBar").style.width = "100%";
+             document.getElementById("dictionarySideBar").style.display = "block";
+         }
+         function BYUPage() {
+             window.location.href = "https://www.byu.edu";
+         }
+         function stack_close() {
+             document.getElementById("stackSideBar").style.display = "none";
+         }
+         function queue_close() {
+             document.getElementById("queueSideBar").style.display = "none";
+         }
+         function dictionary_close() {
+             document.getElementById("dictionarySideBar").style.display = "none";
+         }
+     </script>
+        -->
+</body>
+</html>

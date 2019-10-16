@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Queue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+
+</head>
+<body>
+    <div class="w3-sidebar w3-light-grey w3-bar-block">
+        <h3 class="w3-bar-item">Queue</h3>
+        <a href="@Url.Action("Add", "Queue")" class="w3-bar-item w3-button">Add one time to Queue</a><br />
+        <a href="@Url.Action("HugeList", "Queue")" class="w3-bar-item w3-button">Add Huge List of Items to Queue</a><br />
+        <a href="@Url.Action("Display", "Queue")" class="w3-bar-item w3-button">Display Queue</a><br />
+        <a href="@Url.Action("Delete", "Queue")" class="w3-bar-item w3-button">Delete from Queue</a><br />
+        <a href="@Url.Action("Clear", "Queue")" class="w3-bar-item w3-button">Clear Queue</a><br />
+        <a href="@Url.Action("Search", "Queue")" class="w3-bar-item w3-button">Search Queue</a><br />
+        <a href="@Url.Action("GoHome", "Queue")" class="w3-bar-item w3-button">Return to Main Menu</a>
+    </div>
+
+    <!-- print -->
+    @Html.Raw((String)ViewBag.Message)
+    @foreach (var sData in ViewBag.MyQueue)
+    {
+        <p>@sData</p>
+    }
+</body>
+</html>

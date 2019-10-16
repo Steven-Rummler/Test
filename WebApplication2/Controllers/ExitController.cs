@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace datastructuresuploadtogithub.Controllers
 {
-    public class HomeController : Controller
+    public class ExitController : Controller
     {
-        // GET: Home
+        // GET: Exit
         public ActionResult Index()
         {
             return View();
